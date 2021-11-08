@@ -6,7 +6,7 @@
 /*   By: abazizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 17:47:21 by abazizi           #+#    #+#             */
-/*   Updated: 2021/11/06 17:47:45 by abazizi          ###   ########.fr       */
+/*   Updated: 2021/11/08 15:32:51 by abazizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ char *ft_itoa(int n)
     if (nbr < 0)
         nbr *= -1;
     str = (char *) malloc (size + 1 * sizeof(char));
+	if (!str)
+		return (NULL);
     str[size] = '\0';
-    if(!str)
-        return (NULL);
     ft_switch(nbr, size, str);
     if(n < 0)
         str[0] = '-';

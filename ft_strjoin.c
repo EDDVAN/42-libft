@@ -6,7 +6,7 @@
 /*   By: abazizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 14:55:23 by abazizi           #+#    #+#             */
-/*   Updated: 2021/11/06 15:06:59 by abazizi          ###   ########.fr       */
+/*   Updated: 2021/11/08 15:36:03 by abazizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		size;
 	char	*str;
 
+	if (!s1 || !s2)
+		return (NULL);
 	size = ft_strlen(s1) + ft_strlen(s2);
 	i = 0;
 	c = 0;
