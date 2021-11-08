@@ -6,7 +6,7 @@
 /*   By: abazizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 15:45:37 by abazizi           #+#    #+#             */
-/*   Updated: 2021/11/05 15:51:39 by abazizi          ###   ########.fr       */
+/*   Updated: 2021/11/08 17:29:45 by abazizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,22 @@ int	ft_wordcount(char const *s, char c)
 {
 	int	i;
 	int	res;
-	int b;
 
 	i = 0;
 	res = 0;
-	b = 1;
+	if (s[0] == c)
+	    res--;
 	while (s[i] != '\0')
 	{
-		if (s[i] == c)
+		if (s[i] == c && s[i + 1] != c)
 		{
 			res++;
-			b = 0;
 		}
 		i++;
 	}
-	return (res + b);
+	if (s[i - 1] != c)
+	    res++;
+	return (res);
 }
 
 char	**ft_split(char const *s, char c)
@@ -41,24 +42,30 @@ char	**ft_split(char const *s, char c)
 	int     size;
 	char	**splited;
 
-	i = 0;
-	k = 0;
-	size = ft_wordcount(s,c);
-	splited = (char **)malloc(size);
-	while (i <= size)
-	{
-	    j = 0;
-	    splited[i] = (char *) malloc(500 * sizeof(char));
-	    while (s[k] != c)
-	    {
-	        splited[i][j] = s[k];
-	        j++;
-	        k++;
-	    }
-	    splited[i][j] = '\0';
-	    while (s[k] == c)
-	        k++;
-	    i++;
-	}
+    i = 0;
+    size = ft_wordcount(s,c);
+    k = 0;
+    while (s[k] == c)
+        k++;
+    splited = (char **) malloc(size * sizeof(char *));
+    if (!splited)
+        return NULL;
+    while (i < size)
+    {
+        j = 0;
+        splited[i] = (char *) malloc(500 * sizeof(char));
+		if (!splited[i])
+			return NULL;
+        while (s[k] != '\0' && s[k] != c)
+        {
+            splited[i][j] = s[k];
+            j++;
+            k++;
+        }
+        splited[i][j] = '\0';
+        while (s[k] == c)
+            k++;
+        i++;
+    }
 	return splited;
 }

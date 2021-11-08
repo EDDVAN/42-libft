@@ -6,7 +6,7 @@
 /*   By: abazizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 16:30:46 by abazizi           #+#    #+#             */
-/*   Updated: 2021/11/08 15:38:20 by abazizi          ###   ########.fr       */
+/*   Updated: 2021/11/08 16:26:12 by abazizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char *ft_strtrim(char const *s1, char const *set)
 	j++;
     k = 0;
     s2 = (char *) malloc((j - i + 1) * sizeof(char));
-    if(!s2)
+    if (!s2)
         return (NULL);
     while (i < j)
     {

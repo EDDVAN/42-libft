@@ -6,7 +6,7 @@
 /*   By: abazizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 16:07:48 by abazizi           #+#    #+#             */
-/*   Updated: 2021/11/06 14:56:26 by abazizi          ###   ########.fr       */
+/*   Updated: 2021/11/08 17:35:22 by abazizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define LIBFT_H
 
 # include <stdlib.h>
-
+# include <unistd.h>
 int		ft_isalpha(int c);
 int		ft_toupper(int c);
 int		ft_isdigit(int c);
