@@ -6,7 +6,7 @@
 /*   By: abazizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 16:30:46 by abazizi           #+#    #+#             */
-/*   Updated: 2021/11/08 16:26:12 by abazizi          ###   ########.fr       */
+/*   Updated: 2021/11/09 08:40:38 by abazizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ char *ft_strtrim(char const *s1, char const *set)
     int i;
     int j;
     int k;
-
     char *s2;
+
+	if (!s1 || !set)
+		return (NULL);
     i = 0;
     j = ft_strlen(s1) - 1;
     while (s1[i])

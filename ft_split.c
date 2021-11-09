@@ -6,7 +6,7 @@
 /*   By: abazizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 15:45:37 by abazizi           #+#    #+#             */
-/*   Updated: 2021/11/08 17:29:45 by abazizi          ###   ########.fr       */
+/*   Updated: 2021/11/09 08:39:14 by abazizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ char	**ft_split(char const *s, char c)
 	int     size;
 	char	**splited;
 
+	if (!s)
+		return (NULL);
     i = 0;
     size = ft_wordcount(s,c);
     k = 0;

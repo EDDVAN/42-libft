@@ -6,7 +6,7 @@
 #    By: abazizi <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/05 15:56:54 by abazizi           #+#    #+#              #
-#    Updated: 2021/11/08 17:40:42 by abazizi          ###   ########.fr        #
+#    Updated: 2021/11/09 09:05:57 by abazizi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,3 +27,9 @@ ft_atoi.o : ft_atoi.c
 	${cc} -c ${FLAGS} ft_atoi.c
 ft_memchr.o : ft_memchr.c
 	${cc} -c ${FLAGS} ft_memchr.c
+clean :
+	rm *.o
+
+HEADER_DIR="includes"
+SRC_DIR="srcs"
+
