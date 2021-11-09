@@ -5,69 +5,86 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abazizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/05 15:45:37 by abazizi           #+#    #+#             */
-/*   Updated: 2021/11/09 08:39:14 by abazizi          ###   ########.fr       */
+/*   Created: 2021/11/09 10:56:28 by abazizi           #+#    #+#             */
+/*   Updated: 2021/11/09 10:56:34 by abazizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_wordcount(char const *s, char c)
+static void	clear(char **arr)
 {
-	int	i;
-	int	res;
+	size_t	i;
 
 	i = 0;
+	while (arr[i])
+		free(arr[i++]);
+	free(arr);
+}
+
+static int	ft_wordcount(char const *s, char c)
+{
+	int	res;
+	int	i;
+
 	res = 0;
-	if (s[0] == c)
-	    res--;
-	while (s[i] != '\0')
+	i = 0;
+	while (s[i])
 	{
-		if (s[i] == c && s[i + 1] != c)
+		if (s[i] == c)
 		{
-			res++;
+			i++;
+			continue ;
 		}
-		i++;
+		res++;
+		while (s[i] != c && s[i])
+			i++;
 	}
-	if (s[i - 1] != c)
-	    res++;
 	return (res);
+}
+
+static char	**ft_transfer(char **spl, char const *str, char c)
+{
+	int	index;
+	int	i;
+	int	j;
+
+	index = 0;
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == c)
+		{
+			i++;
+			continue ;
+		}
+		j = i;
+		while (str[i] != c && str[i])
+			i++;
+		spl[index] = malloc(i - j + 1);
+		if (!spl[index])
+			return (NULL);
+		ft_strlcpy(spl[index++], str + j, i - j + 1);
+	}
+	spl[index] = NULL;
+	return (spl);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	int		i;
-	int     j;
-	int     k;
-	int     size;
 	char	**splited;
+	int		size;
 
 	if (!s)
 		return (NULL);
-    i = 0;
-    size = ft_wordcount(s,c);
-    k = 0;
-    while (s[k] == c)
-        k++;
-    splited = (char **) malloc(size * sizeof(char *));
-    if (!splited)
-        return NULL;
-    while (i < size)
-    {
-        j = 0;
-        splited[i] = (char *) malloc(500 * sizeof(char));
-		if (!splited[i])
-			return NULL;
-        while (s[k] != '\0' && s[k] != c)
-        {
-            splited[i][j] = s[k];
-            j++;
-            k++;
-        }
-        splited[i][j] = '\0';
-        while (s[k] == c)
-            k++;
-        i++;
-    }
-	return splited;
+	size = ft_wordcount(s, c);
+	splited = malloc((size + 1) * sizeof(char *));
+	if (!splited)
+		return (NULL);
+	if (!ft_transfer(splited, s, c))
+	{
+		clear(splited);
+		return (NULL);
+	}
+	return (splited);
 }

@@ -3,33 +3,56 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abazizi <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: eassamer <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/11/05 15:56:54 by abazizi           #+#    #+#              #
-#    Updated: 2021/11/09 09:05:57 by abazizi          ###   ########.fr        #
+#    Created: 2021/11/02 14:32:38 by eassamer          #+#    #+#              #
+#    Updated: 2021/11/09 10:31:14 by abazizi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-objects = ft_atoi.o    ft_calloc.o  ft_isalnum.o ft_isdigit.o ft_memchr.o  \
-		  ft_memmove.o ft_strchr.o  ft_strlcat.o ft_strlen.o  ft_strnstr.o ft_tolower.o \
-		  ft_bzero.o   ft_isascii.o  ft_isalpha.o ft_isprint.o ft_memcpy.o  ft_memset.o  \
-		  ft_strdup.o  ft_strlcpy.o ft_strncmp.o ft_strrchr.o ft_toupper.o ft_strjoin.o \
-		  ft_strtrim.o ft_itoa.o ft_split.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o \
-		  ft_putnbr_fd.o
-cc = gcc
-NAME = libft.a
-FLAGS = -Wall -Wextra -Werror
+NAME=libft.a
 
-${NAME}: ${objects}
-	${cc} -c ${FLAGS} *.c
-	ar rc libft.a *.o
-ft_atoi.o : ft_atoi.c
-	${cc} -c ${FLAGS} ft_atoi.c
-ft_memchr.o : ft_memchr.c
-	${cc} -c ${FLAGS} ft_memchr.c
-clean :
-	rm *.o
+CC=gcc
+
+CFLAGS=-Wall -Wextra -Werror
+
+RM=rm -f
+
+LDFLAGS=-L.
+
+LDLIBS=-lft
+
+#SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
+	  ft_isascii.c ft_isdigit.c ft_isprint.c ft_memcpy
+SRC = $(wildcard *.c)
+
+OBJ = $(SRC:.c=.o)
+
+INC = ./inc/
+
+$(NAME): $(OBJ)
+		ar rc $(NAME) $(OBJ)
+		ranlib $(NAME)
+
+%.o: %.c
+		$(CC) -I. -o $@ -c $? $(CFLAGS)
+
+all: $(NAME)
+
+clean:
+		$(RM) $(OBJ)
+
+fclean: clean
+		$(RM) $(NAME)
+
+re: fclean all
+
+.PHONY: clean clean
+
+# so:
+# 	$(CC) -fPIC $(CFLAGS) $(SRC)
+# 	gcc -shared -o libft.so $(OBJ)
+
 
 HEADER_DIR="includes"
 SRC_DIR="srcs"
-
