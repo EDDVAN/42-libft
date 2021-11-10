@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eassamer <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: abazizi <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/11/02 14:32:38 by eassamer          #+#    #+#              #
-#    Updated: 2021/11/10 14:32:01 by abazizi          ###   ########.fr        #
+#    Created: 2021/11/02 14:32:38 by abazizi           #+#    #+#              #
+#    Updated: 2021/11/10 14:50:28 by abazizi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,14 +49,7 @@ fclean: clean
 
 re: fclean all
 
-bonus: all;
-
-.PHONY: clean clean
-
-# so:
-# 	$(CC) -fPIC $(CFLAGS) $(SRC)
-# 	gcc -shared -o libft.so $(OBJ)
-
+bonus: all
 
 HEADER_DIR="includes"
 SRC_DIR="srcs"
