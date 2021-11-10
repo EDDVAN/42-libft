@@ -6,7 +6,7 @@
 #    By: eassamer <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/02 14:32:38 by eassamer          #+#    #+#              #
-#    Updated: 2021/11/09 10:31:14 by abazizi          ###   ########.fr        #
+#    Updated: 2021/11/10 09:38:47 by abazizi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,6 @@ LDFLAGS=-L.
 
 LDLIBS=-lft
 
-#SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
-	  ft_isascii.c ft_isdigit.c ft_isprint.c ft_memcpy
 SRC = $(wildcard *.c)
 
 OBJ = $(SRC:.c=.o)
@@ -46,6 +44,8 @@ fclean: clean
 		$(RM) $(NAME)
 
 re: fclean all
+
+bonus: all;
 
 .PHONY: clean clean
 
